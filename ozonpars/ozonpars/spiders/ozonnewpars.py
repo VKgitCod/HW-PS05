@@ -1,6 +1,4 @@
 import scrapy
-
-
 class OzonnewparsSpider(scrapy.Spider):
     name = "ozonnewpars"
     allowed_domains = ["https://ozon.ru"]
