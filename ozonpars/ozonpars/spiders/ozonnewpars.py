@@ -7,4 +7,12 @@ class OzonnewparsSpider(scrapy.Spider):
     start_urls = ["https://www.ozon.ru/category/noutbuki-15692/"]
 
     def parse(self, response):
-        pass
+        nouts = response.css('div.j7m_23')
+
+        for nout in nouts:
+            yield {
+                'name' : nout.css('div.kj2_23 span::text').get(),
+                'price' : nout.css('div.c3013-a0 span::text').get(),
+                'url' : nout.css('a').attrib['href']
+            }
+
